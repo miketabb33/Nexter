@@ -9,13 +9,21 @@
   background-position: center;
 
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
-  grid-template-columns: max-content;
-  grid-row-gap: 1.5rem;
+  grid-template-rows: 1fr min-content minmax(min-content, 6rem) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
+  row-gap: 1.5rem;
   justify-content: center;
 
   padding: 8rem;
   padding-top: 4rem;
+
+  @media screen and (max-width: $bp-medium) {
+    grid-column: 1/-1;
+  }
+
+  @media screen and (max-width: $bp-small) {
+    padding: 5rem;
+  }
 
   &__btn {
     align-self: start;
@@ -50,9 +58,11 @@
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     grid-column-gap: 3rem;
+    align-items: center;
 
     img {
-      height: 2.5rem;
+      max-height: 2.5rem;
+      max-width: 100%;
       filter: brightness(70%);
     }
   }
